@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.OracleClient;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -24,21 +25,22 @@ namespace QuanLyDeAn.DAO
 
         public bool Login(string userName, string passWord)
         {
-            
-            try
+            if(true)
             {
-                string connectionSTR = @"DATA SOURCE=localhost:1521/xe; USER ID="+ userName + ";PASSWORD="+ passWord;
-                    
-                DataProvider.Instance.SetConnectionString(connectionSTR);
-            }
-            catch (Exception ex)
-            {
-                return false;
-            }
+                try
+                {
+                    string connectionSTR = @"DATA SOURCE=localhost:1521/xe; USER ID="+ userName + ";PASSWORD="+ passWord;
+
+                    DataProvider.Instance.SetConnectionString(connectionSTR);
+                }
+                catch (Exception ex)
+                {
+                    return false;
+                }
                 
-            return true;
-               
-            
+                return true;
+            }    
+            return false;
         }
 
         public DataTable GetListUser()

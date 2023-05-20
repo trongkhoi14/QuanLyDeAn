@@ -30,14 +30,12 @@ namespace QuanLyDeAn
             this.Show();
         }
 
-        private void nhânViênToolStripMenuItem_Click(object sender, EventArgs e)
+        private void phòngBanToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            fNhanVien f = new fNhanVien();
+            fDepartment f = new fDepartment();
             this.Hide();
             f.ShowDialog();
             this.Show();
         }
-
-        
     }
 }

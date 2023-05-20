@@ -166,7 +166,7 @@
             // dtgvTAB
             // 
             this.dtgvTAB.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dtgvTAB.Location = new System.Drawing.Point(3, 0);
+            this.dtgvTAB.Location = new System.Drawing.Point(2, 3);
             this.dtgvTAB.Name = "dtgvTAB";
             this.dtgvTAB.RowHeadersWidth = 51;
             this.dtgvTAB.RowTemplate.Height = 24;
@@ -187,7 +187,7 @@
             // dtgvCOL
             // 
             this.dtgvCOL.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dtgvCOL.Location = new System.Drawing.Point(3, 0);
+            this.dtgvCOL.Location = new System.Drawing.Point(2, 3);
             this.dtgvCOL.Name = "dtgvCOL";
             this.dtgvCOL.RowHeadersWidth = 51;
             this.dtgvCOL.RowTemplate.Height = 24;

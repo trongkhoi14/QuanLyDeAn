@@ -69,22 +69,24 @@
             this.nhânViênToolStripMenuItem.Name = "nhânViênToolStripMenuItem";
             this.nhânViênToolStripMenuItem.Size = new System.Drawing.Size(89, 24);
             this.nhânViênToolStripMenuItem.Text = "Nhân viên";
-            this.nhânViênToolStripMenuItem.Click += new System.EventHandler(this.nhânViênToolStripMenuItem_Click);
             // 
             // phòngBanToolStripMenuItem
             // 
             this.phòngBanToolStripMenuItem.Name = "phòngBanToolStripMenuItem";
             this.phòngBanToolStripMenuItem.Size = new System.Drawing.Size(94, 24);
             this.phòngBanToolStripMenuItem.Text = "Phòng ban";
+            this.phòngBanToolStripMenuItem.Click += new System.EventHandler(this.phòngBanToolStripMenuItem_Click);
             // 
             // đềÁnToolStripMenuItem
             // 
+            this.đềÁnToolStripMenuItem.Enabled = false;
             this.đềÁnToolStripMenuItem.Name = "đềÁnToolStripMenuItem";
             this.đềÁnToolStripMenuItem.Size = new System.Drawing.Size(62, 24);
             this.đềÁnToolStripMenuItem.Text = "Đề án";
             // 
             // phânCôngToolStripMenuItem
             // 
+            this.phânCôngToolStripMenuItem.Enabled = false;
             this.phânCôngToolStripMenuItem.Name = "phânCôngToolStripMenuItem";
             this.phânCôngToolStripMenuItem.Size = new System.Drawing.Size(92, 24);
             this.phânCôngToolStripMenuItem.Text = "Phân công";
@@ -118,11 +120,10 @@
             this.ClientSize = new System.Drawing.Size(1067, 554);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
-            this.Margin = new System.Windows.Forms.Padding(4);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "fHomePage";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Trang chủ";
-            
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);

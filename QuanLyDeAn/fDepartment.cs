@@ -73,5 +73,35 @@ namespace QuanLyDeAn
                 }
             }
         }
+
+        private void btnDeleteDepartment_Click(object sender, EventArgs e)
+        {
+            string departmentID = txbDepartmentID.Text;
+            if (DepartmentDAO.Instance.DeleteDepartment(departmentID))
+            {
+                MessageBox.Show("Xóa thành công!");
+                LoadListDepartment();
+            }
+            else
+            {
+                MessageBox.Show("Phòng ban không tồn tại!");
+            }
+        }
+
+        private void btnUpdateDepartment_Click(object sender, EventArgs e)
+        {
+            string departmentID = txbDepartmentID.Text;
+            string departmentName = txbDepartmentName.Text;
+            string departmentHeadID = txbDepartmentHeadID.Text;
+            if (DepartmentDAO.Instance.UpdateDepartment(departmentID, departmentName, departmentHeadID))
+            {
+                MessageBox.Show("Cập nhật thành công!");
+                LoadListDepartment();
+            }
+            else
+            {
+                MessageBox.Show("Phòng ban không tồn tại!");
+            }
+        }
     }
 }

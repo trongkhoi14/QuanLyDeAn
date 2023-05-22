@@ -46,35 +46,33 @@ namespace QuanLyDeAn.DAO
                 return false;
             }
 
-            DataProvider.Instance.ExecuteOracleProcedure("sp_addDepartment", new OracleParameter("departmentID", departmentID), 
-                                                                            new OracleParameter("departmentName", departmentName), 
-                                                                            new OracleParameter("departmentHeadID", int.Parse(departmentHeadID)));
+            DataProvider.Instance.ExecuteOracleProcedure("MYADMIN.sp_addDepartment", new OracleParameter("departmentID", departmentID), new OracleParameter("departmentName", departmentName), new OracleParameter("departmentHeadID", departmentHeadID));
             return true;
         }
 
-        //public bool DeleteUser(string username)
-        //{
-        //    // Tìm xem tồn tại tài khoản này không, nếu không (số dòng trả về = 0) thì không thể xóa user
-        //    string query = string.Format("SELECT * FROM ALL_USERS WHERE USERNAME = '{0}'", username);
-        //    DataTable result = DataProvider.Instance.ExecuteQuery(query);
-        //    if (result.Rows.Count <= 0)
-        //    {
-        //        return false;
-        //    }
-        //    DataProvider.Instance.ExecuteOracleProcedure("sp_deleteUser", new OracleParameter("username", username));
-        //    return true;
-        //}
+        public bool DeleteDepartment(string departmentID)
+        {
+            // Tìm xem tồn tại phòng ban này không, nếu không (số dòng trả về = 0) thì không thể xóa phòng ban
+            string query = string.Format("SELECT * FROM SYS.PHONGBAN WHERE MAPB = '{0}'", departmentID);
+            DataTable result = DataProvider.Instance.ExecuteQuery(query);
+            if (result.Rows.Count <= 0)
+            {
+                return false;
+            }
+            DataProvider.Instance.ExecuteOracleProcedure("MYADMIN.sp_deleteDepartment", new OracleParameter("departmentID", departmentID));
+            return true;
+        }
 
-        //public bool UpdateUser(string username, string newpassword)
-        //{
-        //    string query = string.Format("SELECT * FROM ALL_USERS WHERE USERNAME = '{0}'", username);
-        //    DataTable result = DataProvider.Instance.ExecuteQuery(query);
-        //    if (result.Rows.Count <= 0)
-        //    {
-        //        return false;
-        //    }
-        //    DataProvider.Instance.ExecuteOracleProcedure("sp_updateUser", new OracleParameter("username", username), new OracleParameter("newpassword", newpassword));
-        //    return true;
-        //}
+        public bool UpdateDepartment(string departmentID, string departmentName, string departmentHeadID)
+        {
+            string query = string.Format("SELECT * FROM SYS.PHONGBAN WHERE MAPB = '{0}'", departmentID);
+            DataTable result = DataProvider.Instance.ExecuteQuery(query);
+            if (result.Rows.Count <= 0)
+            {
+                return false;
+            }
+            DataProvider.Instance.ExecuteOracleProcedure("sp_updateDepartment", new OracleParameter("departmentID", departmentID), new OracleParameter("departmentName", departmentName), new OracleParameter("departmentHeadID", departmentHeadID));
+            return true;
+        }
     }
 }

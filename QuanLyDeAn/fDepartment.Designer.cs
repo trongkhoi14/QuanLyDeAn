@@ -83,6 +83,7 @@
             this.btnDeleteDepartment.TabIndex = 7;
             this.btnDeleteDepartment.Text = "Xóa";
             this.btnDeleteDepartment.UseVisualStyleBackColor = true;
+            this.btnDeleteDepartment.Click += new System.EventHandler(this.btnDeleteDepartment_Click);
             // 
             // btnUpdateDepartment
             // 
@@ -92,6 +93,7 @@
             this.btnUpdateDepartment.TabIndex = 6;
             this.btnUpdateDepartment.Text = "Cập nhật";
             this.btnUpdateDepartment.UseVisualStyleBackColor = true;
+            this.btnUpdateDepartment.Click += new System.EventHandler(this.btnUpdateDepartment_Click);
             // 
             // btnAddDepartment
             // 

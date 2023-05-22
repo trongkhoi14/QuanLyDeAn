@@ -160,7 +160,7 @@ BEGIN
     cur_val := DBMS_SQL.EXECUTE(c);
     DBMS_SQL.CLOSE_CURSOR(c);
   
-  -- Ki?m tra k?t n?i thành công
+  -- Ki?m tra k?t n?i thï¿½nh cï¿½ng
   IF cur_val <> 0 THEN
     success := 1;
   ELSE
@@ -262,77 +262,4 @@ BEGIN
     EXECUTE IMMEDIATE 'ALTER SESSION SET "_ORACLE_SCRIPT"=FALSE';
 END;
 /
-
-
---AN changes here
-CREATE OR REPLACE PROCEDURE sp_addDepartment
-(
-    departmentID VARCHAR2,
-    departmentName VARCHAR2,
-    departmentHeadID NUMBER
-)
-AS
-    strSQL VARCHAR(2000);
-    
-    BEGIN
-    
-    strSQL := 'ALTER SESSION SET "_ORACLE_SCRIPT"=TRUE';
-    EXECUTE IMMEDIATE (strSQL);
-
-    strSQL := 'INSERT INTO SYS.PHONGBAN VALUES ('|| departmentName ||', '|| departmentID ||', '|| TO_CHAR(departmentHeadID) ||')';
-    EXECUTE IMMEDIATE (strSQL);
-    
-    END;
-   
-/
-
-EXECUTE sp_addDepartment('PB05', 'PHONG BAN SO 5', 5);
-/*
-CREATE OR REPLACE PROCEDURE sp_deleteUser
-(
-    username VARCHAR2
-)
-AS
-    strSQL VARCHAR(2000);
-    
-    BEGIN
-    
-    strSQL := 'ALTER SESSION SET "_ORACLE_SCRIPT"=TRUE';
-    EXECUTE IMMEDIATE (strSQL);
-        
-    strSQL := 'DROP USER '||username;
-    EXECUTE IMMEDIATE (strSQL);
-
-    strSQL := 'ALTER SESSION SET "_ORACLE_SCRIPT"=FALSE';
-    EXECUTE IMMEDIATE (strSQL);
-    
-    END;
-  
-/
-CREATE OR REPLACE PROCEDURE sp_updateUser
-(
-    username VARCHAR2,
-    newpassword VARCHAR2 DEFAULT NULL
-)
-AS
-    strSQL VARCHAR2(2000);
-    BEGIN
-    
-    strSQL := 'ALTER SESSION SET "_ORACLE_SCRIPT"=TRUE';
-    EXECUTE IMMEDIATE (strSQL);
-    
-    -- Update password
-    IF newpassword IS NOT NULL THEN
-        strSQL := 'ALTER USER '||username||' IDENTIFIED BY '||newpassword;
-        EXECUTE IMMEDIATE (strSQL);
-    END IF;
-    
-    strSQL := 'ALTER SESSION SET "_ORACLE_SCRIPT"=FALSE';
-    EXECUTE IMMEDIATE (strSQL);
-    
-    END;
-/
-*/
-
-
 

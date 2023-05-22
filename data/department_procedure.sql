@@ -1,5 +1,6 @@
 --SELECT owner, object_name FROM all_procedures WHERE object_type = 'PROCEDURE';
 
+--ADD
 CONNECT MYADMIN/123;
 CREATE OR REPLACE PROCEDURE sp_addDepartment
 (
@@ -15,16 +16,16 @@ AS
     strSQL := 'ALTER SESSION SET "_ORACLE_SCRIPT"=TRUE';
     EXECUTE IMMEDIATE (strSQL);
 
-    INSERT INTO SYS.PHONGBAN (MAPB, TENPB, TRPHG) VALUES ( departmentID , departmentName , TO_NUMBER(departmentHeadID) );
+    INSERT INTO MYADMIN.PHONGBAN (MAPB, TENPB, TRPHG) VALUES ( departmentID , departmentName , TO_NUMBER(departmentHeadID) );
     COMMIT;
     
     END;
    
 /
 DISCONNECT MYADMIN;
---EXECUTE sp_addDepartment('PB07', 'PHONG BAN SO 7', '7');
 
 
+--DELETE
 CONNECT MYADMIN/123;
 CREATE OR REPLACE PROCEDURE sp_deleteDepartment
 (
@@ -37,8 +38,12 @@ AS
     
     strSQL := 'ALTER SESSION SET "_ORACLE_SCRIPT"=TRUE';
     EXECUTE IMMEDIATE (strSQL);
-        
-    DELETE FROM SYS.PHONGBAN WHERE MAPB = departmentID;
+    
+    UPDATE MYADMIN.NHANVIEN
+    SET PHG = 'NULL'
+    WHERE PHG = departmentID; 
+    
+    DELETE FROM MYADMIN.PHONGBAN WHERE MAPB = departmentID;
     COMMIT;
     
     strSQL := 'ALTER SESSION SET "_ORACLE_SCRIPT"=FALSE';
@@ -47,11 +52,9 @@ AS
     END;
 /
 DISCONNECT MYADMIN;
---EXECUTE sp_deleteDepartment('PB01');
---DELETE FROM SYS.PHONGBAN WHERE MAPB = 'PB08';
---COMMIT;
 
 
+--UPDATE
 CONNECT MYADMIN/123;
 CREATE OR REPLACE PROCEDURE sp_updateDepartment
 (
@@ -67,7 +70,7 @@ AS
     EXECUTE IMMEDIATE (strSQL);
     
     -- Update departmentName and departmentHeadID
-    UPDATE SYS.PHONGBAN
+    UPDATE MYADMIN.PHONGBAN
     SET TENPB = departmentName, TRPHG = departmentHeadID
     WHERE MAPB = departmentID;
     

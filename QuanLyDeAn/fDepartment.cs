@@ -100,7 +100,7 @@ namespace QuanLyDeAn
             }
             else
             {
-                MessageBox.Show("Phòng ban không tồn tại!");
+                MessageBox.Show("Phòng ban không tồn tại hoặc trưởng phòng này không tồn tại!");
             }
         }
     }

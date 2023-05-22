@@ -16,7 +16,7 @@ AS
     strSQL := 'ALTER SESSION SET "_ORACLE_SCRIPT"=TRUE';
     EXECUTE IMMEDIATE (strSQL);
 
-    INSERT INTO MYADMIN.PHONGBAN (MAPB, TENPB, TRPHG) VALUES ( departmentID , departmentName , TO_NUMBER(departmentHeadID) );
+    INSERT INTO MYADMIN.PHONGBAN (MAPB, TENPB, TRPHG) VALUES ( departmentID , departmentName , departmentHeadID );
     COMMIT;
     
     END;
@@ -38,10 +38,6 @@ AS
     
     strSQL := 'ALTER SESSION SET "_ORACLE_SCRIPT"=TRUE';
     EXECUTE IMMEDIATE (strSQL);
-    
-    UPDATE MYADMIN.NHANVIEN
-    SET PHG = 'NULL'
-    WHERE PHG = departmentID; 
     
     DELETE FROM MYADMIN.PHONGBAN WHERE MAPB = departmentID;
     COMMIT;

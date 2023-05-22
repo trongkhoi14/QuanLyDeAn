@@ -84,7 +84,7 @@ namespace QuanLyDeAn
             }
             else
             {
-                MessageBox.Show("Phòng ban không tồn tại!");
+                MessageBox.Show("Không thể xoá phòng ban này!");
             }
         }
 

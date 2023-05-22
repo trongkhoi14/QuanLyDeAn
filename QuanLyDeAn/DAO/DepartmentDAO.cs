@@ -57,7 +57,11 @@ namespace QuanLyDeAn.DAO
             string query = string.Format("SELECT * FROM MYADMIN.PHONGBAN WHERE MAPB = '{0}'", departmentID);
             DataTable result = DataProvider.Instance.ExecuteQuery(query);
 
-            if (result.Rows.Count <= 0)
+            // Tìm xem tồn tại nhân viên thuộc phòng ban này không, nếu không (số dòng trả về > 0) thì không thể xóa phòng ban
+            string query1 = string.Format("SELECT * FROM MYADMIN.NHANVIEN WHERE PHG = '{0}'", departmentID);
+            DataTable result1 = DataProvider.Instance.ExecuteQuery(query1);
+
+            if (result.Rows.Count <= 0 || result1.Rows.Count > 0)
             {
                 return false;
             }

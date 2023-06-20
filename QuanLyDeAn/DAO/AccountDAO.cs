@@ -1,4 +1,4 @@
-﻿using System;
+﻿    using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.OracleClient;
@@ -43,8 +43,9 @@ namespace QuanLyDeAn.DAO
 
         public DataTable GetListUser()
         {
-            
-            return DataProvider.Instance.ExecuteQuery(@"SELECT 
+            try
+            {
+                return DataProvider.Instance.ExecuteQuery(@"SELECT 
                                                             USERNAME,
                                                             USER_ID,
                                                             ACCOUNT_STATUS ,
@@ -54,44 +55,78 @@ namespace QuanLyDeAn.DAO
                                                             PASSWORD_CHANGE_DATE
                                                         FROM DBA_USERS 
                                                         ORDER BY created DESC");
+            }
+            catch (Exception ex)
+            {
+                DataTable a = new DataTable();
+                a = null;
+                return a;
+            }
+
         }
 
         public bool CreateUser(string username, string password)
         {
-            // Tìm xem có tài khoản hay chưa, nếu đã có thì truy vấn trả về số dòng > 0 
-            string query = string.Format("SELECT * FROM ALL_USERS WHERE USERNAME = '{0}'", username);
-            DataTable result = DataProvider.Instance.ExecuteQuery(query);
-            if(result.Rows.Count > 0)
+            try
+            {
+                // Tìm xem có tài khoản hay chưa, nếu đã có thì truy vấn trả về số dòng > 0 
+                string query = string.Format("SELECT * FROM ALL_USERS WHERE USERNAME = '{0}'", username);
+                DataTable result = DataProvider.Instance.ExecuteQuery(query);
+                if (result.Rows.Count > 0)
+                {
+                    return false;
+                }
+                DataProvider.Instance.ExecuteOracleProcedure("sp_addUser", new OracleParameter("username", username), new OracleParameter("password", password));
+                return true;
+            }
+            catch(Exception ex)
             {
                 return false;
             }
-            DataProvider.Instance.ExecuteOracleProcedure("sp_addUser", new OracleParameter("username", username), new OracleParameter("password", password));
-            return true;
+            
         }
 
         public bool DeleteUser(string username)
         {
-            // Tìm xem tồn tại tài khoản này không, nếu không (số dòng trả về = 0) thì không thể xóa user
-            string query = string.Format("SELECT * FROM ALL_USERS WHERE USERNAME = '{0}'", username);
-            DataTable result = DataProvider.Instance.ExecuteQuery(query);
-            if (result.Rows.Count <= 0)
+            try
+            {
+                // Tìm xem tồn tại tài khoản này không, nếu không (số dòng trả về = 0) thì không thể xóa user
+                string query = string.Format("SELECT * FROM ALL_USERS WHERE USERNAME = '{0}'", username);
+                DataTable result = DataProvider.Instance.ExecuteQuery(query);
+                if (result.Rows.Count <= 0)
+                {
+                    return false;
+                }
+                DataProvider.Instance.ExecuteOracleProcedure("sp_deleteUser", new OracleParameter("username", username));
+                return true;
+            }
+            catch (Exception ex)
             {
                 return false;
             }
-            DataProvider.Instance.ExecuteOracleProcedure("sp_deleteUser", new OracleParameter("username", username));
-            return true;
+
+            
+           
         }
 
         public bool UpdateUser(string username, string newpassword)
         {
-            string query = string.Format("SELECT * FROM ALL_USERS WHERE USERNAME = '{0}'", username);
-            DataTable result = DataProvider.Instance.ExecuteQuery(query);
-            if (result.Rows.Count <= 0)
+            try
+            {
+                string query = string.Format("SELECT * FROM ALL_USERS WHERE USERNAME = '{0}'", username);
+                DataTable result = DataProvider.Instance.ExecuteQuery(query);
+                if (result.Rows.Count <= 0)
+                {
+                    return false;
+                }
+                DataProvider.Instance.ExecuteOracleProcedure("sp_updateUser", new OracleParameter("username", username), new OracleParameter("newpassword", newpassword));
+                return true;
+            }
+            catch (Exception ex)
             {
                 return false;
             }
-            DataProvider.Instance.ExecuteOracleProcedure("sp_updateUser", new OracleParameter("username", username), new OracleParameter("newpassword", newpassword));
-            return true;
+            
         }
 
         public DataTable GetSYSPrivileges(string username)

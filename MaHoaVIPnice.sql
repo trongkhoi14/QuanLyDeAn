@@ -1,0 +1,204 @@
+SET SERVEROUTPUT ON;
+--Luu tru khoa phu
+DROP TABLE KEY_STORAGE_BACKUP;
+/
+CREATE TABLE KEY_STORAGE_BACKUP (
+  KEY_ID NUMBER,
+  ENCRYPTION_KEY RAW(32)
+);
+/
+-- sao luu khoa
+CREATE OR REPLACE PROCEDURE backup_encryption_key IS
+  l_key RAW(32);
+BEGIN
+  SELECT ENCRYPTION_KEY INTO l_key FROM KEY_STORAGE WHERE KEY_ID = 1;
+  
+  DELETE FROM KEY_STORAGE_BACKUP;
+  
+  INSERT INTO KEY_STORAGE_BACKUP (KEY_ID, ENCRYPTION_KEY) VALUES (1, l_key);
+  
+  COMMIT;
+EXCEPTION
+  WHEN OTHERS THEN
+    RAISE_APPLICATION_ERROR(-20001, 'Error backing up encryption key: ' || SQLERRM);
+END backup_encryption_key;
+/
+
+--khoi phuc khoa
+CREATE OR REPLACE PROCEDURE restore_encryption_key IS
+  l_key RAW(32);
+BEGIN
+  SELECT ENCRYPTION_KEY INTO l_key FROM KEY_STORAGE_BACKUP WHERE KEY_ID = 1;
+  
+  DELETE FROM KEY_STORAGE;
+  
+  INSERT INTO KEY_STORAGE (KEY_ID, ENCRYPTION_KEY) VALUES (1, l_key);
+  
+  COMMIT;
+EXCEPTION
+  WHEN OTHERS THEN
+    RAISE_APPLICATION_ERROR(-20002, 'Error restoring encryption key: ' || SQLERRM);
+END restore_encryption_key;
+/
+
+DROP TABLE KEY_STORAGE;
+/
+-- Luu tru khoa
+CREATE TABLE KEY_STORAGE (
+  KEY_ID NUMBER,
+  ENCRYPTION_KEY RAW(32)
+);
+/
+
+-- Thiet lap khoa
+CREATE OR REPLACE PROCEDURE get_encryption_key IS
+  l_key RAW(32);
+BEGIN
+  l_key :=  UTL_RAW.CAST_TO_RAW(DBMS_RANDOM.STRING('U', 32));
+
+  INSERT INTO KEY_STORAGE (KEY_ID, ENCRYPTION_KEY) VALUES (1, l_key);
+    BEGIN
+      backup_encryption_key;
+    END;
+  COMMIT;
+EXCEPTION
+  WHEN OTHERS THEN
+    RAISE_APPLICATION_ERROR(-20001, 'Error generating and storing encryption key: ' || SQLERRM);
+END get_encryption_key;
+/
+
+-- Thay doi khoa
+CREATE OR REPLACE PROCEDURE delete_encryption_key IS
+BEGIN
+  DELETE FROM KEY_STORAGE WHERE KEY_ID = 1;
+
+  COMMIT;
+EXCEPTION
+  WHEN OTHERS THEN
+    RAISE_APPLICATION_ERROR(-20002, 'Error deleting encryption key: ' || SQLERRM);
+END delete_encryption_key;
+/
+
+CREATE OR REPLACE PACKAGE AES_PACKAGE AS
+  FUNCTION encrypt_aes(p_plain_text IN VARCHAR2, p_iv IN RAW) RETURN RAW;
+  FUNCTION decrypt_aes(p_encrypted_text IN RAW, p_iv IN RAW) RETURN VARCHAR2;
+END AES_PACKAGE;
+/
+
+CREATE OR REPLACE PACKAGE BODY AES_PACKAGE AS
+  -- Ma hoa
+  FUNCTION encrypt_aes(p_plain_text IN VARCHAR2, p_iv IN RAW) RETURN RAW IS
+    l_key RAW(32);
+    l_encrypted_raw RAW(2000);
+  BEGIN
+    SELECT ENCRYPTION_KEY INTO l_key FROM KEY_STORAGE WHERE KEY_ID = 1;
+    l_encrypted_raw := DBMS_CRYPTO.ENCRYPT(
+      src => UTL_RAW.CAST_TO_RAW(p_plain_text),
+      typ => DBMS_CRYPTO.DES3_CBC_PKCS5,
+      key => (l_key),
+      iv => p_iv
+    );
+    RETURN l_encrypted_raw;
+  EXCEPTION
+    WHEN OTHERS THEN
+      RAISE_APPLICATION_ERROR(-20002, 'Error encrypting data: ' || SQLERRM);
+  END encrypt_aes;
+  
+  -- Giai ma
+  FUNCTION decrypt_aes(p_encrypted_text IN RAW, p_iv IN RAW) RETURN VARCHAR2 IS
+    l_key RAW(32);
+    l_decrypted_raw RAW(2000);
+    l_decrypted_text VARCHAR2(2000);
+  BEGIN
+    SELECT ENCRYPTION_KEY INTO l_key FROM KEY_STORAGE WHERE KEY_ID = 1;
+    l_decrypted_raw := DBMS_CRYPTO.DECRYPT(
+      src => p_encrypted_text,
+      typ => DBMS_CRYPTO.DES3_CBC_PKCS5,
+      key => (l_key),
+      iv => p_iv
+    );
+    l_decrypted_text := UTL_RAW.CAST_TO_VARCHAR2(l_decrypted_raw);
+    RETURN l_decrypted_text;
+  EXCEPTION
+    WHEN NO_DATA_FOUND THEN
+      RAISE_APPLICATION_ERROR(-20003, 'Encryption key not found');
+    WHEN OTHERS THEN
+      RAISE_APPLICATION_ERROR(-20004, 'Error decrypting data: ' || SQLERRM);
+  END decrypt_aes;
+END AES_PACKAGE;
+/
+
+-- Ma hoa va Gia ma - Procedure
+CREATE OR REPLACE PROCEDURE ENCRYPT_SALARY_BENEFITS IS
+  v_iv RAW(5);
+BEGIN
+  BEGIN
+    get_encryption_key;
+  END;
+  
+  FOR rec IN (SELECT MANV, LUONG, PHUCAP FROM NHANVIEN) LOOP
+    v_iv := UTL_RAW.CAST_TO_RAW(rec.MANV);
+    
+    UPDATE NHANVIEN 
+    SET LUONG = RAWTOHEX(AES_PACKAGE.encrypt_aes(rec.LUONG, v_iv)),
+        PHUCAP = RAWTOHEX(AES_PACKAGE.encrypt_aes(rec.PHUCAP, v_iv))
+    WHERE MANV = rec.MANV;
+  END LOOP;
+  
+  COMMIT;
+EXCEPTION
+  WHEN OTHERS THEN
+    DBMS_OUTPUT.PUT_LINE('ENCRYPT_SALARY_BENEFITS: ' || SQLERRM);
+END ENCRYPT_SALARY_BENEFITS;
+/
+
+CREATE OR REPLACE PROCEDURE DECRYPT_SALARY_BENEFITS IS
+  v_iv RAW(5);
+BEGIN
+  FOR rec IN (SELECT MANV, LUONG, PHUCAP FROM NHANVIEN) LOOP
+    v_iv := UTL_RAW.CAST_TO_RAW(rec.MANV);
+    
+    UPDATE NHANVIEN 
+    SET LUONG = AES_PACKAGE.decrypt_aes(HEXTORAW(rec.LUONG), v_iv),
+        PHUCAP = AES_PACKAGE.decrypt_aes(HEXTORAW(rec.PHUCAP), v_iv)
+    WHERE MANV = rec.MANV;
+  END LOOP;
+  
+  BEGIN
+    delete_encryption_key;
+  END;     
+  
+  COMMIT;
+EXCEPTION
+  WHEN OTHERS THEN
+    DBMS_OUTPUT.PUT_LINE('DECRYPT_SALARY_BENEFITS: ' || SQLERRM);
+END DECRYPT_SALARY_BENEFITS;
+/
+
+-- Thay doi cau truc du lieu
+UPDATE NHANVIEN SET LUONG = NULL, PHUCAP = NULL;
+/
+ALTER TABLE NHANVIEN MODIFY (LUONG VARCHAR2(2000), PHUCAP VARCHAR2(2000));
+/
+UPDATE NHANVIEN SET LUONG = '1115', PHUCAP = '100';
+
+UPDATE NHANVIEN SET LUONG = '1235', PHUCAP = '140' WHERE MANV = 'NV01';
+/
+
+BEGIN
+  ENCRYPT_SALARY_BENEFITS;
+END;
+/
+
+SELECT * FROM KEY_STORAGE;
+SELECT * FROM NHANVIEN;
+/
+
+BEGIN
+  DECRYPT_SALARY_BENEFITS;
+END;
+/
+
+SELECT * FROM KEY_STORAGE;
+SELECT * FROM NHANVIEN;
+/

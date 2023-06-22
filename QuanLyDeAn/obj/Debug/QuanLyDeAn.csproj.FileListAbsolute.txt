@@ -1,34 +1,6 @@
-C:\Users\PC\Workspace\C#\QuanLyDeAn\QuanLyDeAn\bin\Debug\QuanLyDeAn.exe.config
-C:\Users\PC\Workspace\C#\QuanLyDeAn\QuanLyDeAn\bin\Debug\QuanLyDeAn.exe
-C:\Users\PC\Workspace\C#\QuanLyDeAn\QuanLyDeAn\bin\Debug\QuanLyDeAn.pdb
-C:\Users\PC\Workspace\C#\QuanLyDeAn\QuanLyDeAn\obj\Debug\QuanLyDeAn.csprojAssemblyReference.cache
-C:\Users\PC\Workspace\C#\QuanLyDeAn\QuanLyDeAn\obj\Debug\QuanLyDeAn.fLogin.resources
-C:\Users\PC\Workspace\C#\QuanLyDeAn\QuanLyDeAn\obj\Debug\QuanLyDeAn.Properties.Resources.resources
-C:\Users\PC\Workspace\C#\QuanLyDeAn\QuanLyDeAn\obj\Debug\QuanLyDeAn.csproj.GenerateResource.cache
-C:\Users\PC\Workspace\C#\QuanLyDeAn\QuanLyDeAn\obj\Debug\QuanLyDeAn.csproj.CoreCompileInputs.cache
-C:\Users\PC\Workspace\C#\QuanLyDeAn\QuanLyDeAn\obj\Debug\QuanLyDeAn.exe
-C:\Users\PC\Workspace\C#\QuanLyDeAn\QuanLyDeAn\obj\Debug\QuanLyDeAn.pdb
-C:\Users\PC\Workspace\C#\QuanLyDeAn\QuanLyDeAn\obj\Debug\QuanLyDeAn.fHomePage.resources
-C:\Users\PC\Workspace\C#\QuanLyDeAn\QuanLyDeAn\obj\Debug\QuanLyDeAn.fAdmin.resources
-C:\Users\PC\Workspace\C#\QuanLyDeAn\QuanLyDeAn\obj\Debug\QuanLyDeAn.fNhanVien.resources
-E:\QuanLyDeAn\QuanLyDeAn\QuanLyDeAn\obj\Debug\QuanLyDeAn.csproj.AssemblyReference.cache
-E:\QuanLyDeAn\QuanLyDeAn\QuanLyDeAn\obj\Debug\QuanLyDeAn.fAdmin.resources
-E:\QuanLyDeAn\QuanLyDeAn\QuanLyDeAn\obj\Debug\QuanLyDeAn.fHomePage.resources
-E:\QuanLyDeAn\QuanLyDeAn\QuanLyDeAn\obj\Debug\QuanLyDeAn.fLogin.resources
-E:\QuanLyDeAn\QuanLyDeAn\QuanLyDeAn\obj\Debug\QuanLyDeAn.fNhanVien.resources
-E:\QuanLyDeAn\QuanLyDeAn\QuanLyDeAn\obj\Debug\QuanLyDeAn.Properties.Resources.resources
-E:\QuanLyDeAn\QuanLyDeAn\QuanLyDeAn\obj\Debug\QuanLyDeAn.csproj.GenerateResource.cache
-E:\QuanLyDeAn\QuanLyDeAn\QuanLyDeAn\obj\Debug\QuanLyDeAn.csproj.CoreCompileInputs.cache
-E:\QuanLyDeAn\QuanLyDeAn\QuanLyDeAn\obj\Debug\QuanLyDeAn.exe
-E:\QuanLyDeAn\QuanLyDeAn\QuanLyDeAn\obj\Debug\QuanLyDeAn.pdb
-E:\QuanLyDeAn\QuanLyDeAn\QuanLyDeAn\bin\Debug\QuanLyDeAn.exe.config
-E:\QuanLyDeAn\QuanLyDeAn\QuanLyDeAn\bin\Debug\QuanLyDeAn.exe
-E:\QuanLyDeAn\QuanLyDeAn\QuanLyDeAn\bin\Debug\QuanLyDeAn.pdb
-E:\QuanLyDeAn\QuanLyDeAn\QuanLyDeAn\obj\Debug\QuanLyDeAn.fDean.resources
 C:\Users\PC\OneDrive - VNU-HCMUS\Documents\LuongTrongKhoi\Term6_HCMUS\An toàn và bảo mật dữ liệu trong hệ thống thông tin\QuanLyDeAn\QuanLyDeAn\bin\Debug\QuanLyDeAn.exe.config
 C:\Users\PC\OneDrive - VNU-HCMUS\Documents\LuongTrongKhoi\Term6_HCMUS\An toàn và bảo mật dữ liệu trong hệ thống thông tin\QuanLyDeAn\QuanLyDeAn\bin\Debug\QuanLyDeAn.exe
 C:\Users\PC\OneDrive - VNU-HCMUS\Documents\LuongTrongKhoi\Term6_HCMUS\An toàn và bảo mật dữ liệu trong hệ thống thông tin\QuanLyDeAn\QuanLyDeAn\bin\Debug\QuanLyDeAn.pdb
-C:\Users\PC\OneDrive - VNU-HCMUS\Documents\LuongTrongKhoi\Term6_HCMUS\An toàn và bảo mật dữ liệu trong hệ thống thông tin\QuanLyDeAn\QuanLyDeAn\obj\Debug\QuanLyDeAn.csprojAssemblyReference.cache
 C:\Users\PC\OneDrive - VNU-HCMUS\Documents\LuongTrongKhoi\Term6_HCMUS\An toàn và bảo mật dữ liệu trong hệ thống thông tin\QuanLyDeAn\QuanLyDeAn\obj\Debug\QuanLyDeAn.fAdmin.resources
 C:\Users\PC\OneDrive - VNU-HCMUS\Documents\LuongTrongKhoi\Term6_HCMUS\An toàn và bảo mật dữ liệu trong hệ thống thông tin\QuanLyDeAn\QuanLyDeAn\obj\Debug\QuanLyDeAn.fDean.resources
 C:\Users\PC\OneDrive - VNU-HCMUS\Documents\LuongTrongKhoi\Term6_HCMUS\An toàn và bảo mật dữ liệu trong hệ thống thông tin\QuanLyDeAn\QuanLyDeAn\obj\Debug\QuanLyDeAn.fHomePage.resources

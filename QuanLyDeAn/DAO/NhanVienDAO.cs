@@ -47,5 +47,13 @@ namespace QuanLyDeAn.DAO
             }
         }
 
+        public bool CapNhatNhanVien(string manv, string tennv, string phai, string ngaysinh, 
+                                    string diachi, string sodt, string luong, string phucap, 
+                                    string vaitro, string manql, string phg)
+        {
+
+            return true;
+        }
+
     }
 }

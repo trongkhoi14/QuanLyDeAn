@@ -32,9 +32,13 @@ namespace QuanLyDeAn.DAO
                     case "NhanVien":
                         query = "SELECT * FROM MYADMIN.VIEW_CS1_NHANVIEN";
                         break;
+                    case "QuanLyTrucTiep":
+                        query = "SELECT * FROM MYADMIN.VIEW_CS2_NHANVIEN";
+                        break;
                     case "TruongPhong":
                         query = "SELECT * FROM MYADMIN.VIEW_CS3_NHANVIEN";
                         break;
+                    
                     default:
                         query = "SELECT * FROM MYADMIN.NHANVIEN";
                         break;
@@ -46,13 +50,44 @@ namespace QuanLyDeAn.DAO
                 return new DataTable();
             }
         }
-
+        [Obsolete]
         public bool CapNhatNhanVien(string manv, string tennv, string phai, string ngaysinh, 
                                     string diachi, string sodt, string luong, string phucap, 
                                     string vaitro, string manql, string phg)
         {
+            string role = DataProvider.Instance.role;
+            string query = "";
+            int resultUpdate = 0;
+            if(role == "NhanVien" || role == "TruongPhong" || role == "QuanLyTrucTiep")
+            {
+                query = string.Format("UPDATE MYADMIN.VIEW_CS1_NHANVIEN SET DIACHI = '{0}', NGAYSINH = TO_DATE('{1}', 'dd/mm/yyyy'), SODT = '{2}'", diachi, ngaysinh, sodt);
+                // Nếu dòng dữ liệu là của họ thì họ được cập nhật
+                if (DataProvider.Instance.username == manv)
+                {
+                    try
+                    {
+                        resultUpdate = DataProvider.Instance.ExecuteNonQuery(query);
+                    }
+                    catch (Exception)
+                    {
+                        return false;
+                    }
+                }
+            }  
+            else if(role == "TaiChinh")
+            {
 
-            return true;
+            }   
+            else if(role == "NhanSu")
+            {
+
+            }
+            //
+            if (resultUpdate > 0)
+            {
+                return true;
+            }    
+            return false;
         }
 
     }

@@ -40,6 +40,7 @@
             this.txbNQL = new System.Windows.Forms.TextBox();
             this.panel8 = new System.Windows.Forms.Panel();
             this.label6 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.txbPhuCap = new System.Windows.Forms.TextBox();
             this.txbLuong = new System.Windows.Forms.TextBox();
@@ -63,7 +64,6 @@
             this.label12 = new System.Windows.Forms.Label();
             this.txbMaNV = new System.Windows.Forms.TextBox();
             this.dtgvDSNhanVien = new System.Windows.Forms.DataGridView();
-            this.label10 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel9.SuspendLayout();
@@ -90,7 +90,7 @@
             // 
             // btnCapNhatNV
             // 
-            this.btnCapNhatNV.Location = new System.Drawing.Point(822, 379);
+            this.btnCapNhatNV.Location = new System.Drawing.Point(930, 379);
             this.btnCapNhatNV.Margin = new System.Windows.Forms.Padding(4);
             this.btnCapNhatNV.Name = "btnCapNhatNV";
             this.btnCapNhatNV.Size = new System.Drawing.Size(100, 28);
@@ -101,7 +101,7 @@
             // 
             // btnXoaNhanVien
             // 
-            this.btnXoaNhanVien.Location = new System.Drawing.Point(930, 379);
+            this.btnXoaNhanVien.Location = new System.Drawing.Point(822, 379);
             this.btnXoaNhanVien.Margin = new System.Windows.Forms.Padding(4);
             this.btnXoaNhanVien.Name = "btnXoaNhanVien";
             this.btnXoaNhanVien.Size = new System.Drawing.Size(100, 28);
@@ -202,6 +202,16 @@
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(0, 17);
             this.label6.TabIndex = 1;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(277, 13);
+            this.label10.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(64, 17);
+            this.label10.TabIndex = 1;
+            this.label10.Text = "Phụ cấp:";
             // 
             // label7
             // 
@@ -413,16 +423,6 @@
             this.dtgvDSNhanVien.RowTemplate.Height = 24;
             this.dtgvDSNhanVien.Size = new System.Drawing.Size(479, 524);
             this.dtgvDSNhanVien.TabIndex = 0;
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(277, 13);
-            this.label10.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(64, 17);
-            this.label10.TabIndex = 1;
-            this.label10.Text = "Phụ cấp:";
             // 
             // fNhanVien
             // 

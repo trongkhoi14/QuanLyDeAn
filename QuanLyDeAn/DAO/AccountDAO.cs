@@ -133,7 +133,7 @@ namespace QuanLyDeAn.DAO
             
         }
 
-        //HELLO
+        
         [Obsolete]
         public DataTable GetSYSPrivileges(string username)
         {

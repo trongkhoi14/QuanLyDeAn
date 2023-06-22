@@ -17,6 +17,8 @@ namespace QuanLyDeAn.DAO
 
         public string role = "";
 
+        public string username = "";
+
         public static DataProvider Instance
         {
             get { if (instance == null) instance = new DataProvider(); return DataProvider.instance; }
@@ -48,11 +50,13 @@ namespace QuanLyDeAn.DAO
                 {
                     // Gán giá trị của cột role vào thuộc tính role của lớp DataProvider
                     role = data.Rows[0]["VAITRO"].ToString();
+                    username = data.Rows[0]["MANV"].ToString();
                 }
                 else
                 {
                     // Xử lý khi không tìm thấy dữ liệu hoặc cột role
                     role = "admin"; // hoặc gán giá trị mặc định khác
+                    username = "MYADMIN";
 
                 }
             }

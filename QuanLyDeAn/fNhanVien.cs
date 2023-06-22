@@ -14,11 +14,13 @@ namespace QuanLyDeAn
     public partial class fNhanVien : Form
     {
         BindingSource dsNhanVien = new BindingSource();
+        [Obsolete]
         public fNhanVien()
         {
             InitializeComponent();
             LoadData();
         }
+        #region method
 
         [Obsolete]
         void LoadData()
@@ -41,7 +43,7 @@ namespace QuanLyDeAn
                 txbMaNV.DataBindings.Add(new Binding("Text", dtgvDSNhanVien.DataSource, "MANV", true, DataSourceUpdateMode.Never));
                 txbTenNV.DataBindings.Add(new Binding("Text", dtgvDSNhanVien.DataSource, "TENNV", true, DataSourceUpdateMode.Never));
                 txbPhai.DataBindings.Add(new Binding("Text", dtgvDSNhanVien.DataSource, "PHAI", true, DataSourceUpdateMode.Never));
-                txbNgaySinh.DataBindings.Add(new Binding("Text", dtgvDSNhanVien.DataSource, "NGAYSINH", true, DataSourceUpdateMode.Never));
+                txbNgaySinh.DataBindings.Add(new Binding("Text", dtgvDSNhanVien.DataSource, "NGAYSINH", true, DataSourceUpdateMode.Never, "", "dd/MM/yyyy"));
                 txbDiaChi.DataBindings.Add(new Binding("Text", dtgvDSNhanVien.DataSource, "DIACHI", true, DataSourceUpdateMode.Never));
                 txbSDT.DataBindings.Add(new Binding("Text", dtgvDSNhanVien.DataSource, "SODT", true, DataSourceUpdateMode.Never));
                 txbLuong.DataBindings.Add(new Binding("Text", dtgvDSNhanVien.DataSource, "LUONG", true, DataSourceUpdateMode.Never));
@@ -57,10 +59,25 @@ namespace QuanLyDeAn
             }
            
         }
+        #endregion
 
+        #region event
         private void fNhanVien_Load(object sender, EventArgs e)
         {
-
+            string role = DataProvider.Instance.role;
+            if(role == "NhanVien" || role == "TruongPhong" || role == "QuanLyTrucTiep")
+            {
+                txbMaNV.ReadOnly = true;
+                txbTenNV.ReadOnly = true;
+                txbPhai.ReadOnly = true;
+                txbVaiTro.ReadOnly = true;
+                txbLuong.ReadOnly = true;
+                txbPhuCap.ReadOnly = true;
+                txbNQL.ReadOnly = true;
+                txbPHG.ReadOnly = true;
+                btnThemNV.Enabled = false;
+                btnXoaNhanVien.Enabled = false;
+            }    
         }
 
         [Obsolete]
@@ -95,7 +112,12 @@ namespace QuanLyDeAn
                 {
                     MessageBox.Show("Cập nhật thành công!");
                     LoadDSNhanVien();
-                }    
+                }
+                else
+                {
+                    MessageBox.Show("Cập nhật thất bại :((");
+                    LoadDSNhanVien();
+                }
                
             }
         }
@@ -110,5 +132,6 @@ namespace QuanLyDeAn
                 LoadDSNhanVien();
             }
         }
+        #endregion
     }
 }

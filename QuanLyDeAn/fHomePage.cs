@@ -22,6 +22,7 @@ namespace QuanLyDeAn
         {
             //DataProvider.Instance.role = DataProvider.Instance.ExecuteQuery();
             MessageBox.Show(DataProvider.Instance.role);
+            
             //string role = DataProvider.Instance.role;
             //switch (role)
             //{

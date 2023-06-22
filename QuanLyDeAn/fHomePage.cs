@@ -21,17 +21,17 @@ namespace QuanLyDeAn
         void getRole()
         {
             //DataProvider.Instance.role = DataProvider.Instance.ExecuteQuery();
-            //MessageBox.Show(DataProvider.Instance.role);
+            MessageBox.Show(DataProvider.Instance.role);
             //string role = DataProvider.Instance.role;
             //switch (role)
             //{
-            //    case "TP":
+            //    case "TruongPhong":
             //        adminToolStripMenuItem.Enabled = false;
             //        break;
-            //    case "QLTT":
+            //    case "QuanLyTrucTiep":
             //        adminToolStripMenuItem.Enabled = false;
             //        break;
-            //    case "NV":
+            //    case "NhanVien":
             //        adminToolStripMenuItem.Enabled = false;
             //        break;
             //    case "admin":
@@ -65,7 +65,7 @@ namespace QuanLyDeAn
             {
                 f.ShowDialog();
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 MessageBox.Show("Bạn không có quyền truy cập.");
             }

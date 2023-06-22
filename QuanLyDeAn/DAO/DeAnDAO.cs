@@ -21,6 +21,7 @@ namespace QuanLyDeAn.DAO
 
         private DeAnDAO() { }
 
+        [Obsolete]
         public DataTable DanhSachDeAn()
         {
 
@@ -33,6 +34,8 @@ namespace QuanLyDeAn.DAO
                 return new DataTable();
             }
         }
+
+        [Obsolete]
         public bool AddDeAn(string mada, string tenda, string ngaybd, string phong)
         {
             try
@@ -59,6 +62,7 @@ namespace QuanLyDeAn.DAO
 
         }
 
+        [Obsolete]
         public bool DeleteDeAn(string mada)
         {
             try
@@ -78,6 +82,7 @@ namespace QuanLyDeAn.DAO
             }
         }
 
+        [Obsolete]
         public bool UpdateDeAn(string mada, string tenda, string ngaybd, string phong)
         {
             try

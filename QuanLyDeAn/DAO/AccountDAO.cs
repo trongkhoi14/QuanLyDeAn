@@ -21,7 +21,7 @@ namespace QuanLyDeAn.DAO
 
         private AccountDAO() { }
 
-
+        [Obsolete]
         public bool Login(string userName, string passWord)
         {
             
@@ -41,6 +41,7 @@ namespace QuanLyDeAn.DAO
             
         }
 
+        [Obsolete]
         public DataTable GetListUser()
         {
             try
@@ -65,6 +66,7 @@ namespace QuanLyDeAn.DAO
 
         }
 
+        [Obsolete]
         public bool CreateUser(string username, string password)
         {
             try
@@ -86,6 +88,7 @@ namespace QuanLyDeAn.DAO
             
         }
 
+        [Obsolete]
         public bool DeleteUser(string username)
         {
             try
@@ -109,6 +112,7 @@ namespace QuanLyDeAn.DAO
            
         }
 
+        [Obsolete]
         public bool UpdateUser(string username, string newpassword)
         {
             try
@@ -128,34 +132,45 @@ namespace QuanLyDeAn.DAO
             }
             
         }
+
         //HELLO
+        [Obsolete]
         public DataTable GetSYSPrivileges(string username)
         {
             string query = string.Format("SELECT * FROM USER_SYS_PRIVS WHERE USERNAME = '{0}'", username);
             return DataProvider.Instance.ExecuteQuery(query);
         }
+        [Obsolete]
         public DataTable GetTABPrivileges(string username)
         {
             string query = string.Format("SELECT * FROM USER_TAB_PRIVS WHERE GRANTEE = '{0}'", username);
             return DataProvider.Instance.ExecuteQuery(query);
         }
+        [Obsolete]
         public DataTable GetCOLPrivileges(string username)
         {
             string query = string.Format("SELECT * FROM USER_COL_PRIVS WHERE GRANTEE = '{0}'", username);
             return DataProvider.Instance.ExecuteQuery(query);
         }
 
+        [Obsolete]
         public bool GrantPrivileges(string username, string privilegesName, string tableName, bool withOption)
         {
             string query = string.Format("SELECT * FROM ALL_USERS WHERE USERNAME = '{0}'", username);
             DataTable checkUsername = DataProvider.Instance.ExecuteQuery(query);
+
             if (checkUsername.Rows.Count <= 0)
             {
                 return false;
             }
+
             string query2= string.Format("SELECT * FROM ALL_TABLES WHERE TABLE_NAME = '{0}'", tableName);
             DataTable checkTableName = DataProvider.Instance.ExecuteQuery(query2);
-            if (checkTableName.Rows.Count <= 0)
+
+            string query3 = string.Format("SELECT * FROM ALL_VIEWS WHERE VIEW_NAME = '{0}'", tableName);
+            DataTable checkViewName = DataProvider.Instance.ExecuteQuery(query3);
+
+            if (checkTableName.Rows.Count <= 0 && checkViewName.Rows.Count <=0)
             {
                 return false;
             }
@@ -169,7 +184,7 @@ namespace QuanLyDeAn.DAO
             }
             return true;
         }
-
+        [Obsolete]
         public bool RevokePrivileges(string username, string privilegesName, string tableName, bool withOption)
         {
             string query = string.Format("SELECT * FROM ALL_USERS WHERE USERNAME = '{0}'", username);

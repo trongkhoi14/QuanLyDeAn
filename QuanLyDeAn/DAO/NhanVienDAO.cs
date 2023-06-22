@@ -19,14 +19,29 @@ namespace QuanLyDeAn.DAO
 
         private NhanVienDAO() { }
 
+        [Obsolete]
         public DataTable DanhSachNhanVien()
         {
             
             try
             {
-                return DataProvider.Instance.ExecuteQuery("SELECT * FROM MYADMIN.VIEW_CS1_NHANVIEN");
+                string role = DataProvider.Instance.role;
+                string query = "";
+                switch (role)
+                {
+                    case "NhanVien":
+                        query = "SELECT * FROM MYADMIN.VIEW_CS1_NHANVIEN";
+                        break;
+                    case "TruongPhong":
+                        query = "SELECT * FROM MYADMIN.VIEW_CS3_NHANVIEN";
+                        break;
+                    default:
+                        query = "SELECT * FROM MYADMIN.NHANVIEN";
+                        break;
+                }
+                return DataProvider.Instance.ExecuteQuery(query);
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 return new DataTable();
             }

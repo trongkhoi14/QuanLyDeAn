@@ -20,6 +20,7 @@ namespace QuanLyDeAn
             LoadData();
         }
 
+        [Obsolete]
         void LoadData()
         {
             dtgvDSNhanVien.DataSource = dsNhanVien;
@@ -27,6 +28,7 @@ namespace QuanLyDeAn
             AddNhanVienBinding();
         }
 
+        [Obsolete]
         void LoadDSNhanVien()
         {
             dsNhanVien.DataSource = NhanVienDAO.Instance.DanhSachNhanVien();
@@ -61,6 +63,7 @@ namespace QuanLyDeAn
 
         }
 
+        [Obsolete]
         private void btnXoaNhanVien_Click(object sender, EventArgs e)
         {
             if (MessageBox.Show("Bạn có thật sự muốn xóa nhân viên này?", "Thông báo", MessageBoxButtons.OKCancel)
@@ -71,16 +74,33 @@ namespace QuanLyDeAn
             }
         }
 
+        [Obsolete]
         private void btnCapNhatNV_Click(object sender, EventArgs e)
         {
             if (MessageBox.Show("Bạn có thật sự muốn cập nhật thông tin nhân viên này?", "Thông báo", MessageBoxButtons.OKCancel)
                == System.Windows.Forms.DialogResult.OK)
             {
-                MessageBox.Show("Cập nhật thành công!");
-                LoadDSNhanVien();
+                string manv = txbMaNV.Text;
+                string tennv = txbTenNV.Text;
+                string phai = txbPhai.Text;
+                string ngaysinh = txbNgaySinh.Text;
+                string diachi = txbDiaChi.Text;
+                string sodt = txbSDT.Text;
+                string luong = txbLuong.Text;
+                string phucap = txbPhuCap.Text;
+                string vaitro = txbVaiTro.Text;
+                string manql = txbNQL.Text;
+                string phg = txbPHG.Text;
+                if(NhanVienDAO.Instance.CapNhatNhanVien(manv, tennv, phai, ngaysinh, diachi, sodt, luong, phucap, vaitro, manql, phg))
+                {
+                    MessageBox.Show("Cập nhật thành công!");
+                    LoadDSNhanVien();
+                }    
+               
             }
         }
 
+        [Obsolete]
         private void btnThemNV_Click(object sender, EventArgs e)
         {
             if (MessageBox.Show("Bạn có thật sự muốn thêm nhân viên này?", "Thông báo", MessageBoxButtons.OKCancel)

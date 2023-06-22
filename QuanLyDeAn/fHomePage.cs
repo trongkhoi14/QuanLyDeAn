@@ -1,4 +1,5 @@
-﻿using System;
+﻿using QuanLyDeAn.DAO;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -15,8 +16,42 @@ namespace QuanLyDeAn
         public fHomePage()
         {
             InitializeComponent();
+            getRole();
         }
-
+        void getRole()
+        {
+            //DataProvider.Instance.role = DataProvider.Instance.ExecuteQuery();
+            //MessageBox.Show(DataProvider.Instance.role);
+            //string role = DataProvider.Instance.role;
+            //switch (role)
+            //{
+            //    case "TP":
+            //        adminToolStripMenuItem.Enabled = false;
+            //        break;
+            //    case "QLTT":
+            //        adminToolStripMenuItem.Enabled = false;
+            //        break;
+            //    case "NV":
+            //        adminToolStripMenuItem.Enabled = false;
+            //        break;
+            //    case "admin":
+            //        adminToolStripMenuItem.Enabled = true;
+            //        nhânViênToolStripMenuItem.Enabled = false;
+            //        phòngBanToolStripMenuItem.Enabled = false;
+            //        đềÁnToolStripMenuItem.Enabled = false;
+            //        phânCôngToolStripMenuItem.Enabled = false;
+            //        break;
+            //    default:
+                    
+            //        adminToolStripMenuItem.Enabled = false;
+            //        nhânViênToolStripMenuItem.Enabled = false;
+            //        phòngBanToolStripMenuItem.Enabled = false;
+            //        đềÁnToolStripMenuItem.Enabled = false;
+            //        phânCôngToolStripMenuItem.Enabled = false;
+            //        break;
+            //}
+        }
+  
         private void đăngXuấtToolStripMenuItem_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -26,13 +61,29 @@ namespace QuanLyDeAn
         {
             fAdmin f = new fAdmin();
             this.Hide();
+            try
+            {
+                f.ShowDialog();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Bạn không có quyền truy cập.");
+            }
+
+            this.Show();
+        }
+
+        private void nhânViênToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            fNhanVien f = new fNhanVien();
+            this.Hide();
             f.ShowDialog();
             this.Show();
         }
 
-        private void phòngBanToolStripMenuItem_Click(object sender, EventArgs e)
+        private void đềÁnToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            fDepartment f = new fDepartment();
+            fDean f = new fDean();
             this.Hide();
             f.ShowDialog();
             this.Show();

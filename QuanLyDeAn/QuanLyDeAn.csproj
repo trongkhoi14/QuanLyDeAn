@@ -111,13 +111,20 @@
   <ItemGroup>
     <Compile Include="DAO\AccountDAO.cs" />
     <Compile Include="DAO\DataProvider.cs" />
-    <Compile Include="DAO\DepartmentDAO.cs" />
+    <Compile Include="DAO\DeAnDAO.cs" />
+    <Compile Include="DAO\NhanVienDAO.cs" />
     <Compile Include="DAO\RoleDAO.cs" />
     <Compile Include="fAdmin.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="fAdmin.Designer.cs">
       <DependentUpon>fAdmin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="fDean.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="fDean.Designer.cs">
+      <DependentUpon>fDean.cs</DependentUpon>
     </Compile>
     <Compile Include="fHomePage.cs">
       <SubType>Form</SubType>
@@ -131,16 +138,19 @@
     <Compile Include="fLogin.Designer.cs">
       <DependentUpon>fLogin.cs</DependentUpon>
     </Compile>
-    <Compile Include="fDepartment.cs">
+    <Compile Include="fNhanVien.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="fDepartment.Designer.cs">
-      <DependentUpon>fDepartment.cs</DependentUpon>
+    <Compile Include="fNhanVien.Designer.cs">
+      <DependentUpon>fNhanVien.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="fAdmin.resx">
       <DependentUpon>fAdmin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="fDean.resx">
+      <DependentUpon>fDean.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="fHomePage.resx">
       <DependentUpon>fHomePage.cs</DependentUpon>
@@ -148,8 +158,8 @@
     <EmbeddedResource Include="fLogin.resx">
       <DependentUpon>fLogin.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="fDepartment.resx">
-      <DependentUpon>fDepartment.cs</DependentUpon>
+    <EmbeddedResource Include="fNhanVien.resx">
+      <DependentUpon>fNhanVien.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -160,6 +170,7 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <None Include="ClassDiagram1.cd" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

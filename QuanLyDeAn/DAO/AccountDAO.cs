@@ -128,7 +128,7 @@ namespace QuanLyDeAn.DAO
             }
             
         }
-
+        //HELLO
         public DataTable GetSYSPrivileges(string username)
         {
             string query = string.Format("SELECT * FROM USER_SYS_PRIVS WHERE USERNAME = '{0}'", username);

@@ -28,7 +28,7 @@ namespace QuanLyDeAn.DAO
             {
                 return DataProvider.Instance.ExecuteQuery("SELECT * FROM MYADMIN.DeAn ORDER BY MADA ASC");
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 return new DataTable();
             }
@@ -52,7 +52,7 @@ namespace QuanLyDeAn.DAO
                 DataProvider.Instance.ExecuteOracleProcedure("INSERT_DEAN", new OracleParameter("p_MADA", mada), new OracleParameter("p_TENDA", tenda), new OracleParameter("p_NGAYBD", DateTime.Parse(ngaybd)), new OracleParameter("p_PHONG", phong));
                 return true;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 return false;
             }
@@ -72,7 +72,7 @@ namespace QuanLyDeAn.DAO
                 DataProvider.Instance.ExecuteOracleProcedure("DELETE_DEAN", new OracleParameter("p_MADA", mada));
                 return true;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 return false;
             }
@@ -91,7 +91,7 @@ namespace QuanLyDeAn.DAO
                 DataProvider.Instance.ExecuteOracleProcedure("UPDATE_DEAN", new OracleParameter("p_MADA", mada), new OracleParameter("p_TENDA", tenda), new OracleParameter("p_NGAYBD", DateTime.Parse(ngaybd)), new OracleParameter("p_PHONG", phong));
                 return true;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 return false;
             }

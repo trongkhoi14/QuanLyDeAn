@@ -25,6 +25,7 @@ namespace QuanLyDeAn.DAO
         private DataProvider() { }
 
         // Phương thức SetConnectionString để thiết lập chuỗi kết nối từ các lớp khác:
+        [Obsolete]
         public void SetConnectionString(string connectionString)
         {
             // Set lại connection string
@@ -55,7 +56,7 @@ namespace QuanLyDeAn.DAO
 
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 role = "";
             }
@@ -64,6 +65,7 @@ namespace QuanLyDeAn.DAO
         }
 
         // Cái này dùng cho truy vấn trả về dạng table
+        [Obsolete]
         public DataTable ExecuteQuery(string query, object[] parameter = null)
         {
             DataTable data = new DataTable();
@@ -105,8 +107,9 @@ namespace QuanLyDeAn.DAO
             }
             return data;
         }
-        
+
         // Cái này dùng cho insert, update, delete --> nó trả về số dòng thực thi thành công 
+        [Obsolete]
         public int ExecuteNonQuery(string query, object[] parameter = null)
         {
             int data = 0;
@@ -138,6 +141,7 @@ namespace QuanLyDeAn.DAO
             return data;
         }
 
+        [Obsolete]
         public void ExecuteOracleProcedure(string procedureName, params OracleParameter[] parameters)
         {
             using (OracleConnection connection = new OracleConnection(connectionSTR))
@@ -162,8 +166,10 @@ namespace QuanLyDeAn.DAO
                 connection.Close();
             }
         }
+
         // Call the procedure sp_addUser with parameters 'testuser' and 'testpassword'
         // ExecuteOracleProcedure("sp_addUser", new OracleParameter("username", "testuser"), new OracleParameter("password", "testpassword"));
+        [Obsolete]
         public int ExecuteProcedureWithOutput(string procedureName, OracleParameter[] parameters)
         {
             int result = 0;
@@ -182,7 +188,7 @@ namespace QuanLyDeAn.DAO
             return result;
         }
 
-
+        [Obsolete]
         public string GetDbmsOutput()
         {
             string output = "";

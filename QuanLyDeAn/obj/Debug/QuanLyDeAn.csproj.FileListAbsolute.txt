@@ -11,3 +11,6 @@ C:\Users\PC\OneDrive - VNU-HCMUS\Documents\LuongTrongKhoi\Term6_HCMUS\An toàn v
 C:\Users\PC\OneDrive - VNU-HCMUS\Documents\LuongTrongKhoi\Term6_HCMUS\An toàn và bảo mật dữ liệu trong hệ thống thông tin\QuanLyDeAn\QuanLyDeAn\obj\Debug\QuanLyDeAn.csproj.CoreCompileInputs.cache
 C:\Users\PC\OneDrive - VNU-HCMUS\Documents\LuongTrongKhoi\Term6_HCMUS\An toàn và bảo mật dữ liệu trong hệ thống thông tin\QuanLyDeAn\QuanLyDeAn\obj\Debug\QuanLyDeAn.exe
 C:\Users\PC\OneDrive - VNU-HCMUS\Documents\LuongTrongKhoi\Term6_HCMUS\An toàn và bảo mật dữ liệu trong hệ thống thông tin\QuanLyDeAn\QuanLyDeAn\obj\Debug\QuanLyDeAn.pdb
+C:\Users\PC\OneDrive - VNU-HCMUS\Documents\LuongTrongKhoi\Term6_HCMUS\An toàn và bảo mật dữ liệu trong hệ thống thông tin\QuanLyDeAn\QuanLyDeAn\obj\Debug\QuanLyDeAn.csprojAssemblyReference.cache
+C:\Users\PC\OneDrive - VNU-HCMUS\Documents\LuongTrongKhoi\Term6_HCMUS\An toàn và bảo mật dữ liệu trong hệ thống thông tin\QuanLyDeAn\QuanLyDeAn\obj\Debug\QuanLyDeAn.fPhanCong.resources
+C:\Users\PC\OneDrive - VNU-HCMUS\Documents\LuongTrongKhoi\Term6_HCMUS\An toàn và bảo mật dữ liệu trong hệ thống thông tin\QuanLyDeAn\QuanLyDeAn\obj\Debug\QuanLyDeAn.fPhongBan.resources

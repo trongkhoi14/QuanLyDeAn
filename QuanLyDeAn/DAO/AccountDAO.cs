@@ -56,7 +56,7 @@ namespace QuanLyDeAn.DAO
                                                         FROM DBA_USERS 
                                                         ORDER BY created DESC");
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 DataTable a = new DataTable();
                 a = null;
@@ -79,7 +79,7 @@ namespace QuanLyDeAn.DAO
                 DataProvider.Instance.ExecuteOracleProcedure("sp_addUser", new OracleParameter("username", username), new OracleParameter("password", password));
                 return true;
             }
-            catch(Exception ex)
+            catch(Exception)
             {
                 return false;
             }
@@ -100,7 +100,7 @@ namespace QuanLyDeAn.DAO
                 DataProvider.Instance.ExecuteOracleProcedure("sp_deleteUser", new OracleParameter("username", username));
                 return true;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 return false;
             }
@@ -122,7 +122,7 @@ namespace QuanLyDeAn.DAO
                 DataProvider.Instance.ExecuteOracleProcedure("sp_updateUser", new OracleParameter("username", username), new OracleParameter("newpassword", newpassword));
                 return true;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 return false;
             }

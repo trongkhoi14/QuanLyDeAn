@@ -78,6 +78,18 @@ namespace QuanLyDeAn
                 btnThemNV.Enabled = false;
                 btnXoaNhanVien.Enabled = false;
             }    
+            else if(role == "TaiChinh")
+            {
+                txbMaNV.ReadOnly = true;
+                txbTenNV.ReadOnly = true;
+                txbPhai.ReadOnly = true;
+                txbVaiTro.ReadOnly = true;
+                txbNQL.ReadOnly = true;
+                txbPHG.ReadOnly = true;
+                btnThemNV.Enabled = false;
+                btnXoaNhanVien.Enabled = false;
+                
+            }
         }
 
         [Obsolete]

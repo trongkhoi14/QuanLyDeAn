@@ -161,7 +161,8 @@ namespace QuanLyDeAn
             // 
             // btnCapNhatDA
             // 
-            this.btnCapNhatDA.Location = new System.Drawing.Point(822, 215);
+            this.btnCapNhatDA.Enabled = false;
+            this.btnCapNhatDA.Location = new System.Drawing.Point(937, 221);
             this.btnCapNhatDA.Margin = new System.Windows.Forms.Padding(4);
             this.btnCapNhatDA.Name = "btnCapNhatDA";
             this.btnCapNhatDA.Size = new System.Drawing.Size(100, 28);
@@ -172,7 +173,8 @@ namespace QuanLyDeAn
             // 
             // btnXoaDA
             // 
-            this.btnXoaDA.Location = new System.Drawing.Point(930, 215);
+            this.btnXoaDA.Enabled = false;
+            this.btnXoaDA.Location = new System.Drawing.Point(721, 221);
             this.btnXoaDA.Margin = new System.Windows.Forms.Padding(4);
             this.btnXoaDA.Name = "btnXoaDA";
             this.btnXoaDA.Size = new System.Drawing.Size(100, 28);
@@ -183,7 +185,8 @@ namespace QuanLyDeAn
             // 
             // btnThemDA
             // 
-            this.btnThemDA.Location = new System.Drawing.Point(714, 215);
+            this.btnThemDA.Enabled = false;
+            this.btnThemDA.Location = new System.Drawing.Point(829, 221);
             this.btnThemDA.Margin = new System.Windows.Forms.Padding(4);
             this.btnThemDA.Name = "btnThemDA";
             this.btnThemDA.Size = new System.Drawing.Size(100, 28);
@@ -240,6 +243,7 @@ namespace QuanLyDeAn
             this.Name = "fDean";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Đề án";
+            this.Load += new System.EventHandler(this.fDean_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dtgvDSDeAn)).EndInit();
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();

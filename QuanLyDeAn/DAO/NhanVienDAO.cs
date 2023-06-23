@@ -38,9 +38,12 @@ namespace QuanLyDeAn.DAO
                     case "TruongPhong":
                         query = "SELECT * FROM MYADMIN.VIEW_CS3_NHANVIEN";
                         break;
-                    
+                    case "TaiChinh":
+                        query = "SELECT * FROM MYADMIN.VIEW_CS4_NHANVIEN";
+                        break;
+
                     default:
-                        query = "SELECT * FROM MYADMIN.NHANVIEN";
+                        query = "SELECT * FROM MYADMIN.VIEW_CS1_NHANVIEN";
                         break;
                 }
                 return DataProvider.Instance.ExecuteQuery(query);
@@ -76,7 +79,20 @@ namespace QuanLyDeAn.DAO
             }  
             else if(role == "TaiChinh")
             {
-
+                
+                // Cập nhật dữ liệu cá nhân
+                if (DataProvider.Instance.username == manv)
+                {
+                    try
+                    {
+                        query = string.Format("UPDATE MYADMIN.VIEW_CS1_NHANVIEN SET DIACHI = '{0}', NGAYSINH = TO_DATE('{1}', 'dd/mm/yyyy'), SODT = '{2}'", diachi, ngaysinh, sodt);
+                        resultUpdate = DataProvider.Instance.ExecuteNonQuery(query);
+                    }
+                    catch (Exception)
+                    {
+                        return false;
+                    }
+                }
             }   
             else if(role == "NhanSu")
             {

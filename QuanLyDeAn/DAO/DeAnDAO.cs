@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace QuanLyDeAn.DAO
 {
-    class DeAnDAO
+    public class DeAnDAO
     {
         private static DeAnDAO instance;
         private object mada;
@@ -27,7 +27,7 @@ namespace QuanLyDeAn.DAO
 
             try
             {
-                return DataProvider.Instance.ExecuteQuery("SELECT * FROM MYADMIN.DeAn ORDER BY MADA ASC");
+                return DataProvider.Instance.ExecuteQuery("SELECT * FROM MYADMIN.VIEW_CS1_DEAN ORDER BY MADA ASC");
             }
             catch (Exception)
             {
@@ -49,7 +49,7 @@ namespace QuanLyDeAn.DAO
                 string query1 = string.Format("SELECT * FROM MYADMIN.DeAn WHERE TENDA = '{0}'", tenda);
                 DataTable result1 = DataProvider.Instance.ExecuteQuery(query1);
                 if (result1.Rows.Count > 0)
-                {
+                {   
                     return false;
                 }
                 DataProvider.Instance.ExecuteOracleProcedure("INSERT_DEAN", new OracleParameter("p_MADA", mada), new OracleParameter("p_TENDA", tenda), new OracleParameter("p_NGAYBD", DateTime.Parse(ngaybd)), new OracleParameter("p_PHONG", phong));

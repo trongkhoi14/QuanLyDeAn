@@ -14,29 +14,33 @@ namespace QuanLyDeAn
     public partial class fDean : Form
     {
         BindingSource dsDeAn = new BindingSource();
+        [Obsolete]
         public fDean()
         {
             InitializeComponent();
             LoadData();
         }
+        #region method
+        [Obsolete]
         void LoadData()
         {
             dtgvDSDeAn.DataSource = dsDeAn;
             LoadDSDeAn();
             AddDeAnBinding();
         }
+        [Obsolete]
         void LoadDSDeAn()
         {
             dsDeAn.DataSource = DeAnDAO.Instance.DanhSachDeAn();
         }
-
+        [Obsolete]
         void AddDeAnBinding()
         {
             if (dsDeAn.DataSource is DataTable dt && dt.Rows.Count > 0)
             {
                 txbMaDA.DataBindings.Add(new Binding("Text", dtgvDSDeAn.DataSource, "MADA", true, DataSourceUpdateMode.Never));
                 txbTenDA.DataBindings.Add(new Binding("Text", dtgvDSDeAn.DataSource, "TENDA", true, DataSourceUpdateMode.Never));
-                txbNgayBD.DataBindings.Add(new Binding("Text", dtgvDSDeAn.DataSource, "NGAYBD", true, DataSourceUpdateMode.Never));
+                txbNgayBD.DataBindings.Add(new Binding("Text", dtgvDSDeAn.DataSource, "NGAYBD", true, DataSourceUpdateMode.Never, "", "dd/MM/yyyy"));
                 txbPhong.DataBindings.Add(new Binding("Text", dtgvDSDeAn.DataSource, "PHONG", true, DataSourceUpdateMode.Never));
 
             }
@@ -46,7 +50,21 @@ namespace QuanLyDeAn
                 // MessageBox.Show("Không có dữ liệu để gắn kết!");
             }
         }
+        #endregion
 
+        #region event
+        [Obsolete]
+        private void fDean_Load(object sender, EventArgs e)
+        {
+            string role = DataProvider.Instance.role;
+            if (role == "TruongDeAn")
+            {
+                btnCapNhatDA.Enabled = true;
+                btnThemDA.Enabled = true;
+                btnXoaDA.Enabled = true;
+            }
+        }
+        [Obsolete]
         private void btnThemDA_Click(object sender, EventArgs e)
         {
             string mada = txbMaDA.Text;
@@ -70,7 +88,7 @@ namespace QuanLyDeAn
                 }
             }
         }
-
+        [Obsolete]
         private void btnCapNhatDA_Click(object sender, EventArgs e)
         {
             string mada = txbMaDA.Text;
@@ -94,7 +112,7 @@ namespace QuanLyDeAn
                 }
             }
         }
-
+        [Obsolete]
         private void btnXoaDA_Click(object sender, EventArgs e)
         {
             string mada = txbMaDA.Text;
@@ -115,5 +133,6 @@ namespace QuanLyDeAn
                 }
             }
         }
+        #endregion
     }
 }

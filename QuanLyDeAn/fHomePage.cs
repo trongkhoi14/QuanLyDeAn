@@ -89,5 +89,13 @@ namespace QuanLyDeAn
             f.ShowDialog();
             this.Show();
         }
+
+        private void phòngBanToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            fPhongBan f = new fPhongBan();
+            this.Hide();
+            f.ShowDialog();
+            this.Show();
+        }
     }
 }

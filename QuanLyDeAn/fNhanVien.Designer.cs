@@ -101,7 +101,7 @@
             // 
             // btnXoaNhanVien
             // 
-            this.btnXoaNhanVien.Location = new System.Drawing.Point(822, 379);
+            this.btnXoaNhanVien.Location = new System.Drawing.Point(714, 379);
             this.btnXoaNhanVien.Margin = new System.Windows.Forms.Padding(4);
             this.btnXoaNhanVien.Name = "btnXoaNhanVien";
             this.btnXoaNhanVien.Size = new System.Drawing.Size(100, 28);
@@ -112,7 +112,7 @@
             // 
             // btnThemNV
             // 
-            this.btnThemNV.Location = new System.Drawing.Point(714, 379);
+            this.btnThemNV.Location = new System.Drawing.Point(822, 379);
             this.btnThemNV.Margin = new System.Windows.Forms.Padding(4);
             this.btnThemNV.Name = "btnThemNV";
             this.btnThemNV.Size = new System.Drawing.Size(100, 28);

@@ -34,7 +34,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.txbTenPB = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
-            this.dtgvDSNhanVien = new System.Windows.Forms.DataGridView();
+            this.dtgvDSPhongBan = new System.Windows.Forms.DataGridView();
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnCapNhatPB = new System.Windows.Forms.Button();
@@ -43,7 +43,7 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel6 = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
-            ((System.ComponentModel.ISupportInitialize)(this.dtgvDSNhanVien)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dtgvDSPhongBan)).BeginInit();
             this.panel3.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -105,15 +105,15 @@
             this.label12.TabIndex = 1;
             this.label12.Text = "Mã:";
             // 
-            // dtgvDSNhanVien
+            // dtgvDSPhongBan
             // 
-            this.dtgvDSNhanVien.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dtgvDSNhanVien.Location = new System.Drawing.Point(3, 3);
-            this.dtgvDSNhanVien.Name = "dtgvDSNhanVien";
-            this.dtgvDSNhanVien.RowHeadersWidth = 51;
-            this.dtgvDSNhanVien.RowTemplate.Height = 24;
-            this.dtgvDSNhanVien.Size = new System.Drawing.Size(479, 524);
-            this.dtgvDSNhanVien.TabIndex = 0;
+            this.dtgvDSPhongBan.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dtgvDSPhongBan.Location = new System.Drawing.Point(3, 3);
+            this.dtgvDSPhongBan.Name = "dtgvDSPhongBan";
+            this.dtgvDSPhongBan.RowHeadersWidth = 51;
+            this.dtgvDSPhongBan.RowTemplate.Height = 24;
+            this.dtgvDSPhongBan.Size = new System.Drawing.Size(479, 524);
+            this.dtgvDSPhongBan.TabIndex = 0;
             // 
             // panel3
             // 
@@ -130,7 +130,7 @@
             this.panel1.Controls.Add(this.btnXoaPB);
             this.panel1.Controls.Add(this.btnThemPB);
             this.panel1.Controls.Add(this.panel2);
-            this.panel1.Controls.Add(this.dtgvDSNhanVien);
+            this.panel1.Controls.Add(this.dtgvDSPhongBan);
             this.panel1.Location = new System.Drawing.Point(12, 12);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1043, 530);
@@ -138,17 +138,20 @@
             // 
             // btnCapNhatPB
             // 
-            this.btnCapNhatPB.Location = new System.Drawing.Point(822, 171);
+            this.btnCapNhatPB.Enabled = false;
+            this.btnCapNhatPB.Location = new System.Drawing.Point(930, 171);
             this.btnCapNhatPB.Margin = new System.Windows.Forms.Padding(4);
             this.btnCapNhatPB.Name = "btnCapNhatPB";
             this.btnCapNhatPB.Size = new System.Drawing.Size(100, 28);
             this.btnCapNhatPB.TabIndex = 2;
             this.btnCapNhatPB.Text = "Cập nhật";
             this.btnCapNhatPB.UseVisualStyleBackColor = true;
+            this.btnCapNhatPB.Click += new System.EventHandler(this.btnCapNhatPB_Click);
             // 
             // btnXoaPB
             // 
-            this.btnXoaPB.Location = new System.Drawing.Point(930, 171);
+            this.btnXoaPB.Enabled = false;
+            this.btnXoaPB.Location = new System.Drawing.Point(714, 171);
             this.btnXoaPB.Margin = new System.Windows.Forms.Padding(4);
             this.btnXoaPB.Name = "btnXoaPB";
             this.btnXoaPB.Size = new System.Drawing.Size(100, 28);
@@ -158,13 +161,15 @@
             // 
             // btnThemPB
             // 
-            this.btnThemPB.Location = new System.Drawing.Point(714, 171);
+            this.btnThemPB.Enabled = false;
+            this.btnThemPB.Location = new System.Drawing.Point(822, 171);
             this.btnThemPB.Margin = new System.Windows.Forms.Padding(4);
             this.btnThemPB.Name = "btnThemPB";
             this.btnThemPB.Size = new System.Drawing.Size(100, 28);
             this.btnThemPB.TabIndex = 4;
             this.btnThemPB.Text = "Thêm";
             this.btnThemPB.UseVisualStyleBackColor = true;
+            this.btnThemPB.Click += new System.EventHandler(this.btnThemPB_Click);
             // 
             // panel2
             // 
@@ -203,7 +208,8 @@
             this.Name = "fPhongBan";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Phòng ban";
-            ((System.ComponentModel.ISupportInitialize)(this.dtgvDSNhanVien)).EndInit();
+            this.Load += new System.EventHandler(this.fPhongBan_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.dtgvDSPhongBan)).EndInit();
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
             this.panel1.ResumeLayout(false);
@@ -224,7 +230,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txbTenPB;
         private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.DataGridView dtgvDSNhanVien;
+        private System.Windows.Forms.DataGridView dtgvDSPhongBan;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button btnCapNhatPB;

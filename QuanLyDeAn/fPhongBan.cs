@@ -56,12 +56,14 @@ namespace QuanLyDeAn
         private void fPhongBan_Load(object sender, EventArgs e)
         {
             string role = DataProvider.Instance.role;
-            if (role == "NhanSu")
-            {
-                btnCapNhatPB.Enabled = true;
-                btnThemPB.Enabled = true;
-                btnXoaPB.Enabled = true;
-            }
+            btnCapNhatPB.Enabled = true;
+            btnThemPB.Enabled = true;
+            //if (role == "NhanSu")
+            //{
+            //    btnCapNhatPB.Enabled = true;
+            //    btnThemPB.Enabled = true;
+
+            //}
         }
         [Obsolete]
         private void btnThemPB_Click(object sender, EventArgs e)
@@ -69,8 +71,26 @@ namespace QuanLyDeAn
             if (MessageBox.Show("Bạn có thật sự muốn thêm phòng ban?", "Thông báo", MessageBoxButtons.OKCancel)
                == System.Windows.Forms.DialogResult.OK)
             {
-                MessageBox.Show("Thêm thành công!");
-                LoadDSPhongBan();
+                string mapb = txbMaPB.Text;
+                string tenpb = txbTenPB.Text;
+                string truongpb = txbTRPHG.Text;
+                if(mapb != "" && tenpb != "" && truongpb != "")
+                {
+                    if(PhongBanDAO.Instance.ThemPhongBan(mapb, tenpb, truongpb))
+                    {
+                        MessageBox.Show("Thêm thành công!");
+                        LoadDSPhongBan();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Thêm thất bại :((");
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Vui lòng điền đầy đủ thông tin");
+                }
+
             }
         }
         [Obsolete]
@@ -79,8 +99,26 @@ namespace QuanLyDeAn
             if (MessageBox.Show("Bạn có thật sự muốn cập nhật phòng ban?", "Thông báo", MessageBoxButtons.OKCancel)
                == System.Windows.Forms.DialogResult.OK)
             {
-                MessageBox.Show("Cập nhật thành công!");
-                LoadDSPhongBan();
+                string mapb = txbMaPB.Text;
+                string tenpb = txbTenPB.Text;
+                string truongpb = txbTRPHG.Text;
+                if (mapb != "" && tenpb != "" && truongpb != "")
+                {
+                    if (PhongBanDAO.Instance.CapNhatPhongBan(mapb, tenpb, truongpb))
+                    {
+                        MessageBox.Show("Cập nhật thành công!");
+                        LoadDSPhongBan();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Cập nhật thất bại :((");
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Vui lòng điền đầy đủ thông tin");
+                }
+              
             }
         }
 

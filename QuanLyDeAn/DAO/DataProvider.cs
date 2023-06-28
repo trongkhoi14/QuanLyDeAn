@@ -100,7 +100,7 @@ namespace QuanLyDeAn.DAO
                 {
                     adapter.Fill(data);
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
                     connection.Close();
                     return new DataTable();
@@ -137,9 +137,15 @@ namespace QuanLyDeAn.DAO
                         }
                     }
                 }
-
+                //try
+                //{
+                //    data = command.ExecuteNonQuery();
+                //}
+                //catch(Exception)
+                //{
+                //    return data;
+                //}
                 data = command.ExecuteNonQuery();
-
                 connection.Close();
             }
             return data;

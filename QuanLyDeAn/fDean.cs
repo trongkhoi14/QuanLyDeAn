@@ -56,13 +56,16 @@ namespace QuanLyDeAn
         [Obsolete]
         private void fDean_Load(object sender, EventArgs e)
         {
-            string role = DataProvider.Instance.role;
-            if (role == "TruongDeAn")
-            {
-                btnCapNhatDA.Enabled = true;
-                btnThemDA.Enabled = true;
-                btnXoaDA.Enabled = true;
-            }
+            btnCapNhatDA.Enabled = true;
+            btnThemDA.Enabled = true;
+            btnXoaDA.Enabled = true;
+            //string role = DataProvider.Instance.role;
+            //if (role == "TruongDeAn")
+            //{
+            //    btnCapNhatDA.Enabled = true;
+            //    btnThemDA.Enabled = true;
+            //    btnXoaDA.Enabled = true;
+            //}
         }
         [Obsolete]
         private void btnThemDA_Click(object sender, EventArgs e)
@@ -84,7 +87,7 @@ namespace QuanLyDeAn
                 }
                 else
                 {
-                    MessageBox.Show("Đề án đã tồn tại!");
+                    MessageBox.Show("Thêm đề án thất bại :((");
                 }
             }
         }
@@ -95,9 +98,9 @@ namespace QuanLyDeAn
             string tenda = txbTenDA.Text;
             string ngaybd = txbNgayBD.Text;
             string phong = txbPhong.Text;
-            if ((mada == "" && tenda == "") || (mada == "" && ngaybd == "") || (mada == "" && phong == "") || (phong == "" && tenda == "" && ngaybd == ""))
+            if ((mada == "" && tenda == "" && ngaybd == "" && phong == ""))
             {
-                MessageBox.Show("Vui lòng điền mã đề án và ít nhất một thông tin khác khi muốn cập nhật đề án!");
+                MessageBox.Show("Vui lòng điền đầy đủ thông tin!");
             }
             else
             {
@@ -108,7 +111,7 @@ namespace QuanLyDeAn
                 }
                 else
                 {
-                    MessageBox.Show("Đề án không tồn tại!");
+                    MessageBox.Show("Cập nhật đề án thất bại :((");
                 }
             }
         }
@@ -129,7 +132,7 @@ namespace QuanLyDeAn
                 }
                 else
                 {
-                    MessageBox.Show("Đề án không tồn tại!");
+                    MessageBox.Show("Xóa đề án thất bại :((");
                 }
             }
         }

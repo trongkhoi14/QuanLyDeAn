@@ -113,6 +113,7 @@
     <Compile Include="DAO\DataProvider.cs" />
     <Compile Include="DAO\DeAnDAO.cs" />
     <Compile Include="DAO\NhanVienDAO.cs" />
+    <Compile Include="DAO\PhanCongDAO.cs" />
     <Compile Include="DAO\PhongBanDAO.cs" />
     <Compile Include="DAO\RoleDAO.cs" />
     <Compile Include="fAdmin.cs">

@@ -97,5 +97,13 @@ namespace QuanLyDeAn
             f.ShowDialog();
             this.Show();
         }
+
+        private void phânCôngToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            fPhanCong f = new fPhanCong();
+            this.Hide();
+            f.ShowDialog();
+            this.Show();
+        }
     }
 }

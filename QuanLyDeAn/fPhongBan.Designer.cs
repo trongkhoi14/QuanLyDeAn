@@ -38,7 +38,6 @@
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnCapNhatPB = new System.Windows.Forms.Button();
-            this.btnXoaPB = new System.Windows.Forms.Button();
             this.btnThemPB = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel6 = new System.Windows.Forms.Panel();
@@ -127,7 +126,6 @@
             // panel1
             // 
             this.panel1.Controls.Add(this.btnCapNhatPB);
-            this.panel1.Controls.Add(this.btnXoaPB);
             this.panel1.Controls.Add(this.btnThemPB);
             this.panel1.Controls.Add(this.panel2);
             this.panel1.Controls.Add(this.dtgvDSPhongBan);
@@ -147,17 +145,6 @@
             this.btnCapNhatPB.Text = "Cập nhật";
             this.btnCapNhatPB.UseVisualStyleBackColor = true;
             this.btnCapNhatPB.Click += new System.EventHandler(this.btnCapNhatPB_Click);
-            // 
-            // btnXoaPB
-            // 
-            this.btnXoaPB.Enabled = false;
-            this.btnXoaPB.Location = new System.Drawing.Point(714, 171);
-            this.btnXoaPB.Margin = new System.Windows.Forms.Padding(4);
-            this.btnXoaPB.Name = "btnXoaPB";
-            this.btnXoaPB.Size = new System.Drawing.Size(100, 28);
-            this.btnXoaPB.TabIndex = 3;
-            this.btnXoaPB.Text = "Xóa";
-            this.btnXoaPB.UseVisualStyleBackColor = true;
             // 
             // btnThemPB
             // 
@@ -234,7 +221,6 @@
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button btnCapNhatPB;
-        private System.Windows.Forms.Button btnXoaPB;
         private System.Windows.Forms.Button btnThemPB;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Panel panel6;

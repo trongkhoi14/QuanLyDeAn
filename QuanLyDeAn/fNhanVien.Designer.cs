@@ -64,6 +64,7 @@
             this.label12 = new System.Windows.Forms.Label();
             this.txbMaNV = new System.Windows.Forms.TextBox();
             this.dtgvDSNhanVien = new System.Windows.Forms.DataGridView();
+            this.btnLamMoi = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel9.SuspendLayout();
@@ -80,6 +81,7 @@
             // 
             this.panel1.Controls.Add(this.btnCapNhatNV);
             this.panel1.Controls.Add(this.btnXoaNhanVien);
+            this.panel1.Controls.Add(this.btnLamMoi);
             this.panel1.Controls.Add(this.btnThemNV);
             this.panel1.Controls.Add(this.panel2);
             this.panel1.Controls.Add(this.dtgvDSNhanVien);
@@ -424,6 +426,17 @@
             this.dtgvDSNhanVien.Size = new System.Drawing.Size(479, 524);
             this.dtgvDSNhanVien.TabIndex = 0;
             // 
+            // btnLamMoi
+            // 
+            this.btnLamMoi.Location = new System.Drawing.Point(491, 379);
+            this.btnLamMoi.Margin = new System.Windows.Forms.Padding(4);
+            this.btnLamMoi.Name = "btnLamMoi";
+            this.btnLamMoi.Size = new System.Drawing.Size(100, 28);
+            this.btnLamMoi.TabIndex = 4;
+            this.btnLamMoi.Text = "Làm mới";
+            this.btnLamMoi.UseVisualStyleBackColor = true;
+            this.btnLamMoi.Click += new System.EventHandler(this.btnLamMoi_Click);
+            // 
             // fNhanVien
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -493,5 +506,6 @@
         private System.Windows.Forms.TextBox txbPhuCap;
         private System.Windows.Forms.TextBox txbLuong;
         private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Button btnLamMoi;
     }
 }

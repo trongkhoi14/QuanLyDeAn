@@ -34,7 +34,7 @@
             this.txbMaDA = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
             this.txbThoiGian = new System.Windows.Forms.TextBox();
-            this.dtgvDSNhanVien = new System.Windows.Forms.DataGridView();
+            this.dtgvDSPhanCong = new System.Windows.Forms.DataGridView();
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnCapNhatPC = new System.Windows.Forms.Button();
@@ -43,7 +43,7 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel5 = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
-            ((System.ComponentModel.ISupportInitialize)(this.dtgvDSNhanVien)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dtgvDSPhanCong)).BeginInit();
             this.panel3.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -105,15 +105,15 @@
             this.txbThoiGian.Size = new System.Drawing.Size(430, 22);
             this.txbThoiGian.TabIndex = 3;
             // 
-            // dtgvDSNhanVien
+            // dtgvDSPhanCong
             // 
-            this.dtgvDSNhanVien.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dtgvDSNhanVien.Location = new System.Drawing.Point(3, 3);
-            this.dtgvDSNhanVien.Name = "dtgvDSNhanVien";
-            this.dtgvDSNhanVien.RowHeadersWidth = 51;
-            this.dtgvDSNhanVien.RowTemplate.Height = 24;
-            this.dtgvDSNhanVien.Size = new System.Drawing.Size(479, 524);
-            this.dtgvDSNhanVien.TabIndex = 0;
+            this.dtgvDSPhanCong.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dtgvDSPhanCong.Location = new System.Drawing.Point(3, 3);
+            this.dtgvDSPhanCong.Name = "dtgvDSPhanCong";
+            this.dtgvDSPhanCong.RowHeadersWidth = 51;
+            this.dtgvDSPhanCong.RowTemplate.Height = 24;
+            this.dtgvDSPhanCong.Size = new System.Drawing.Size(479, 524);
+            this.dtgvDSPhanCong.TabIndex = 0;
             // 
             // panel3
             // 
@@ -130,7 +130,7 @@
             this.panel1.Controls.Add(this.btnXoaPC);
             this.panel1.Controls.Add(this.btnThemPC);
             this.panel1.Controls.Add(this.panel2);
-            this.panel1.Controls.Add(this.dtgvDSNhanVien);
+            this.panel1.Controls.Add(this.dtgvDSPhanCong);
             this.panel1.Location = new System.Drawing.Point(12, 12);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1043, 530);
@@ -145,6 +145,7 @@
             this.btnCapNhatPC.TabIndex = 2;
             this.btnCapNhatPC.Text = "Cập nhật";
             this.btnCapNhatPC.UseVisualStyleBackColor = true;
+            this.btnCapNhatPC.Click += new System.EventHandler(this.btnCapNhatPC_Click);
             // 
             // btnXoaPC
             // 
@@ -155,6 +156,7 @@
             this.btnXoaPC.TabIndex = 3;
             this.btnXoaPC.Text = "Xóa";
             this.btnXoaPC.UseVisualStyleBackColor = true;
+            this.btnXoaPC.Click += new System.EventHandler(this.btnXoaPC_Click);
             // 
             // btnThemPC
             // 
@@ -165,6 +167,7 @@
             this.btnThemPC.TabIndex = 4;
             this.btnThemPC.Text = "Thêm";
             this.btnThemPC.UseVisualStyleBackColor = true;
+            this.btnThemPC.Click += new System.EventHandler(this.btnThemPC_Click);
             // 
             // panel2
             // 
@@ -203,7 +206,7 @@
             this.Name = "fPhanCong";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Phân công";
-            ((System.ComponentModel.ISupportInitialize)(this.dtgvDSNhanVien)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dtgvDSPhanCong)).EndInit();
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
             this.panel1.ResumeLayout(false);
@@ -224,7 +227,7 @@
         private System.Windows.Forms.TextBox txbMaDA;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.TextBox txbThoiGian;
-        private System.Windows.Forms.DataGridView dtgvDSNhanVien;
+        private System.Windows.Forms.DataGridView dtgvDSPhanCong;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button btnCapNhatPC;

@@ -27,7 +27,17 @@ namespace QuanLyDeAn.DAO
 
             try
             {
-                return DataProvider.Instance.ExecuteQuery("SELECT * FROM MYADMIN.VIEW_CS1_DEAN ORDER BY MADA ASC");
+                string role = DataProvider.Instance.role;
+                string query = "";
+                if (role == "TruongDeAn")
+                {
+                    query = "SELECT * FROM MYADMIN.VIEW_CS6_DEAN ORDER BY MADA ASC";
+                }
+                else
+                {
+                    query = "SELECT * FROM MYADMIN.VIEW_CS1_DEAN ORDER BY MADA ASC";
+                }
+                return DataProvider.Instance.ExecuteQuery(query);
             }
             catch (Exception)
             {
@@ -40,20 +50,29 @@ namespace QuanLyDeAn.DAO
         {
             try
             {
-                string query = string.Format("SELECT * FROM MYADMIN.DeAn WHERE MADA = '{0}'", mada);
-                DataTable result = DataProvider.Instance.ExecuteQuery(query);
-                if (result.Rows.Count > 0)
+                string role = DataProvider.Instance.role;
+                string query = "";
+                int result = 0;
+                if(role == "TruongDeAn")
                 {
+                    query = string.Format("INSERT INTO MYADMIN.VIEW_CS6_DEAN " +
+                    "VALUES ('{0}', '{1}', TO_DATE('{2}','dd/mm/yyyy'), '{3}')", mada, tenda, ngaybd, phong);
+                    try
+                    {
+                        result = DataProvider.Instance.ExecuteNonQuery(query);
+                    }
+                    catch (Exception)
+                    {
+                        return false;
+                    }
+
+                    if (result > 0)
+                    {
+                        return true;
+                    }
                     return false;
                 }
-                string query1 = string.Format("SELECT * FROM MYADMIN.DeAn WHERE TENDA = '{0}'", tenda);
-                DataTable result1 = DataProvider.Instance.ExecuteQuery(query1);
-                if (result1.Rows.Count > 0)
-                {   
-                    return false;
-                }
-                DataProvider.Instance.ExecuteOracleProcedure("INSERT_DEAN", new OracleParameter("p_MADA", mada), new OracleParameter("p_TENDA", tenda), new OracleParameter("p_NGAYBD", DateTime.Parse(ngaybd)), new OracleParameter("p_PHONG", phong));
-                return true;
+                return false;
             }
             catch (Exception)
             {
@@ -67,14 +86,28 @@ namespace QuanLyDeAn.DAO
         {
             try
             {
-                string query = string.Format("SELECT * FROM MYADMIN.DeAn WHERE MADA = '{0}'", mada);
-                DataTable result = DataProvider.Instance.ExecuteQuery(query);
-                if (result.Rows.Count == 0)
+                string role = DataProvider.Instance.role;
+                string query = "";
+                int result = 0;
+                if (role == "TruongDeAn")
                 {
+                    query = string.Format("DELETE FROM MYADMIN.VIEW_CS6_DEAN WHERE MADA = '{0}'", mada);
+                    try
+                    {
+                        result = DataProvider.Instance.ExecuteNonQuery(query);
+                    }
+                    catch (Exception)
+                    {
+                        return false;
+                    }
+
+                    if (result > 0)
+                    {
+                        return true;
+                    }
                     return false;
                 }
-                DataProvider.Instance.ExecuteOracleProcedure("DELETE_DEAN", new OracleParameter("p_MADA", mada));
-                return true;
+                return false;
             }
             catch (Exception)
             {
@@ -87,20 +120,36 @@ namespace QuanLyDeAn.DAO
         {
             try
             {
-                string query = string.Format("SELECT * FROM MYADMIN.DeAn WHERE MADA = '{0}'", mada);
-                DataTable result = DataProvider.Instance.ExecuteQuery(query);
-                if (result.Rows.Count == 0)
+                string role = DataProvider.Instance.role;
+                string query = "";
+                int result = 0;
+                if (role == "TruongDeAn")
                 {
+                    query = string.Format("UPDATE MYADMIN.VIEW_CS6_DEAN " +
+                    "SET TENDA = '{0}', " +
+                    "NGAYBD = TO_DATE('{1}','dd/mm/yyyy'), " +
+                    "PHONG = '{2}' WHERE MADA = '{3}'", tenda, ngaybd, phong, mada);
+                    try
+                    {
+                        result = DataProvider.Instance.ExecuteNonQuery(query);
+                    }
+                    catch (Exception)
+                    {
+                        return false;
+                    }
+
+                    if (result > 0)
+                    {
+                        return true;
+                    }
                     return false;
                 }
-                DataProvider.Instance.ExecuteOracleProcedure("UPDATE_DEAN", new OracleParameter("p_MADA", mada), new OracleParameter("p_TENDA", tenda), new OracleParameter("p_NGAYBD", DateTime.Parse(ngaybd)), new OracleParameter("p_PHONG", phong));
-                return true;
+                return false;
             }
             catch (Exception)
             {
                 return false;
             }
-
         }
     }
 }
